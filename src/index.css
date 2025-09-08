@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
+/* Define the dark variant for Tailwind CSS 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Primary color (#8B4513) */
+--color-primary-50: #F5E8E0;
+--color-primary-100: #E8CBB8;
+--color-primary-200: #DAA991;
+--color-primary-300: #CD8769;
+--color-primary-400: #BF6542;
+--color-primary-500: #8B4513;
+--color-primary-600: #7C3E11;
+--color-primary-700: #6D360F;
+--color-primary-800: #5E2F0D;
+--color-primary-900: #4F270A;
+--color-primary-950: #3F2008;
+
+  /* Main primary color - the one used most often */
+  --color-primary: var(--color-primary-500);
+
+  /* Secondary color (#F4A460) */
+--color-secondary-50: #FEF2E6;
+--color-secondary-100: #FCE8CC;
+--color-secondary-200: #FADDB3;
+--color-secondary-300: #F8D299;
+--color-secondary-400: #F6C77F;
+--color-secondary-500: #F4A460;
+--color-secondary-600: #E09454;
+--color-secondary-700: #CD8448;
+--color-secondary-800: #B7733C;
+--color-secondary-900: #A16230;
+--color-secondary-950: #8A5126;
+
+  /* Main secondary color */
+  --color-secondary: var(--color-secondary-500);
+
+  /* Tertiary color (#F5F5DC) */
+--color-tertiary-50: #FDFDF9;
+--color-tertiary-100: #F9F9F0;
+--color-tertiary-200: #F6F6E6;
+--color-tertiary-300: #F2F2DD;
+--color-tertiary-400: #EFEFD3;
+--color-tertiary-500: #F5F5DC;
+--color-tertiary-600: #E0E0C6;
+--color-tertiary-700: #CACAA9;
+--color-tertiary-800: #B5B58D;
+--color-tertiary-900: #9F9F71;
+--color-tertiary-950: #8A8A5E;
+
+  /* Main tertiary color */
+  --color-tertiary: var(--color-tertiary-500);
+
+  /* Accent color (#6B8E23) */
+--color-accent-1-50: #E8F0D6;
+--color-accent-1-100: #D6E1AD;
+--color-accent-1-200: #C3D285;
+--color-accent-1-300: #B0C35C;
+--color-accent-1-400: #9DB433;
+--color-accent-1-500: #6B8E23;
+--color-accent-1-600: #617F1F;
+--color-accent-1-700: #56711B;
+--color-accent-1-800: #4C6317;
+--color-accent-1-900: #415513;
+--color-accent-1-950: #37470F;
+
+/* Main accent color */
+  --color-accent: var(--color-accent-1-500);
+
+  /* Gray scale */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #030712;
+
+  /* Semantic colors */
+  --color-info: var(--color-secondary-500);
+  --color-success: var(--color-primary-500);
+  --color-warning: var(--color-accent-500);
+  --color-error: #ef4444;
+
+  /* Light theme colors */
+  --color-light-bg: var(--color-gray-50);
+  --color-light-text: var(--color-gray-900);
+  --color-light-border: var(--color-gray-200);
+
+  /* Dark theme colors */
+  --color-dark-bg: var(--color-gray-900);
+  --color-dark-text: var(--color-gray-50);
+  --color-dark-border: var(--color-gray-700);
+
+  /* Legacy colors - keeping for backward compatibility */
+  --color-light-100: #cecefb;
+  --color-light-200: #a8b5db;
+  --color-dark-100: #0f0d23;
+
+  /* Other variables */
+  --font-dm-sans: DM Sans, sans-serif;
+  --breakpoint-xs: 480px;
+}
+
+@layer base {
+  body {
+    font-family: "DM Sans", serif;
+    font-optical-sizing: auto;
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white;
+  }
+
+  h1 {
+    @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
+  }
+
+  h2 {
+    @apply text-2xl font-bold text-gray-600 dark:text-white sm:text-3xl;
+  }
+
+  main {
+    @apply min-h-screen relative bg-gray-50 dark:bg-gray-900;
+  }
+
+  header {
+    @apply sm:mt-10 mt-5;
+  }
+
+  label {
+    @apply block text-gray-700 dark:text-gray-300 font-bold
+  }
+
+}
+
+@layer components {
+  .text-input {
+    @apply bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none dark:!text-white !text-gray-700;
+  }
+}
+
+@utility hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -1,0 +1,33 @@
+import {
+  BellIcon,
+  Grid2X2,
+  MoonIcon,
+  SparklesIcon,
+  SunIcon,
+  SettingsIcon,
+  LogOutIcon,
+  LayoutDashboard,
+  ListCheck,
+  BarChart3Icon,
+  UsersRoundIcon,
+  SearchIcon,
+  ShoppingCart,
+  Package,
+} from "lucide-react";
+
+export const Icons = {
+  apps: Grid2X2,
+  sun: SunIcon,
+  moon: MoonIcon,
+  bell: BellIcon,
+  sparkle: SparklesIcon,
+  settings: SettingsIcon,
+  logout: LogOutIcon,
+  dashboard: LayoutDashboard,
+  task: ListCheck,
+  barchart: BarChart3Icon,
+  users: UsersRoundIcon,
+  search: SearchIcon,
+  shoppingCart: ShoppingCart,
+  package: Package,
+};

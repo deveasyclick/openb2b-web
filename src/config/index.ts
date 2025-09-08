@@ -1,0 +1,36 @@
+import type { Environment } from "@/types";
+
+type EnvVar<T> = {
+  value: T;
+  required?: boolean;
+};
+
+type ENV_VARS = {
+  clerkPublishableKey: EnvVar<string>;
+  environment: EnvVar<Environment>;
+  apiBaseUrl: EnvVar<string>;
+};
+
+const configs: ENV_VARS = {
+  environment: {
+    value: import.meta.env.MODE as Environment,
+  },
+  apiBaseUrl: {
+    value: import.meta.env.VITE_API_BASE_URL,
+    required: true,
+  },
+  clerkPublishableKey: {
+    value: import.meta.env.VITE_CLERK_PUBLISHABLE_KEY,
+    required: true,
+  },
+};
+
+Object.values(configs).forEach((envObj) => {
+  if (envObj.required && !envObj.value) {
+    throw new Error(`Missing required environment variable: ${envObj.value}`);
+  }
+});
+
+export function getConfig(key: keyof ENV_VARS): string {
+  return configs[key].value;
+}
