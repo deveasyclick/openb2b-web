@@ -1,20 +1,17 @@
-import type { Workspace } from "./org";
+import type { Address } from "./address";
+import type { Base } from "./base";
+import type { Org } from "./org";
 
-export type Role = "distributor" | "manager";
+export type Role = "distributor" | "admin" | "viewer" | "sales";
 
-export interface Distributor {
-  id: number;
-  createdAt: string | Date;
-  updatedAt: string | Date;
+export interface User extends Base {
   clerkId: string;
   firstName: string;
   lastName: string;
-  email: string;
-  phone?: string;
-  state?: string;
-  city?: string;
-  address?: string;
+  email?: string;
+  phone: string;
   role: Role;
-  workspaceId: string;
-  workspace?: Workspace;
+  orgId: string;
+  org?: Org;
+  address: Address;
 }
