@@ -13,17 +13,17 @@ import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 import NavUser from "./NavUser";
 import Icon from "@/components/icons";
+import type { User } from "@/types/user";
 
-// TODO: replace with real user data type
 interface DashboardSidebarProps {
-  readonly user: Record<string, string>;
+  readonly user: User;
 }
 export default function DashboardSidebar({ user }: DashboardSidebarProps) {
   const location = useLocation();
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="py-5">
-        <Logo imageAlt="OpenB2B logo" text="" />
+        <Logo />
       </SidebarHeader>
       <SidebarContent
         className={cn(
