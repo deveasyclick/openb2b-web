@@ -9,6 +9,6 @@ export const IMAGES = {
 };
 
 export const EXTERNAL_IMAGES = {
-  DEFAULT_AVATAR:
+  AVATAR:
     "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png",
 };
