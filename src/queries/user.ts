@@ -8,5 +8,6 @@ export function useFetchMe() {
     queryFn: () => getMe(),
     select: (data) => data.data,
     staleTime: 5 * 60 * 1000, // 5 minutes
+    retry: 1,
   });
 }
