@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router";
 // src/components/RequireRole.tsx
-import { useUser } from "@clerk/react-router";
+import { useAuth, useUser } from "@clerk/react-router";
+import { PageLoader } from "@/components/loaders";
 
 type Role = "admin" | "viewer" | "sales" | "distributor";
 
@@ -9,22 +10,31 @@ interface RequireRoleProps {
 }
 
 export default function RouteGuard({ allowedRoles }: RequireRoleProps) {
-  const { isLoaded, isSignedIn, user } = useUser();
+  const { user, isLoaded, isSignedIn } = useUser();
+  const { signOut } = useAuth();
 
-  // While Clerk is loading
-  if (!isLoaded) return <div>Loading...</div>;
+  // Clerk or backend is loading
+  if (!isLoaded) return <PageLoader />;
 
-  // If not signed in, redirect to login
+  // Not signed in
   if (!isSignedIn) return <Navigate to="/signin" replace />;
 
-  // Retrieve role from Clerk's custom claims
-  const role = user?.publicMetadata?.role as Role | undefined;
+  // Role
+  const role = user!.publicMetadata?.role as Role | undefined;
 
-  // If no role or not in allowed list, deny access
-  if (allowedRoles && (!role || !allowedRoles.includes(role))) {
-    return <Navigate to="/unauthorized" replace />;
+  // Onboarding check only for admins
+  const orgId = user!.externalId as string | undefined;
+
+  if (role === "admin" && !orgId) {
+    return <Navigate to="/onboarding" replace />;
   }
 
-  // Otherwise, allow access
+  // Optional allowedRoles check
+  if (allowedRoles && (!role || !allowedRoles.includes(role))) {
+    signOut({ redirectUrl: "/signin" });
+    return <PageLoader />;
+  }
+
+  // All checks passed → render nested routes
   return <Outlet />;
 }
