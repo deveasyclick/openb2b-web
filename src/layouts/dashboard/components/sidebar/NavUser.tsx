@@ -19,17 +19,17 @@ import {
 import type React from "react";
 import Icon from "@/components/icons";
 import { useMemo } from "react";
-import { getInitials } from "@/utils";
+import { cast, getInitials } from "@/utils";
 import { EXTERNAL_IMAGES } from "@/constants/image";
 import type { User } from "@/types/user";
-import { SignOutButton } from "@clerk/react-router";
+import { SignOutButton, useUser } from "@clerk/react-router";
 
-interface NavUserProps {
-  user: User;
-}
+interface NavUserProps {}
 
-const NavUser: React.FC<NavUserProps> = ({ user }) => {
+const NavUser: React.FC<NavUserProps> = () => {
   const { isMobile } = useSidebar();
+  const { user: clerkUser } = useUser();
+  const user = cast<User>(clerkUser);
   const initials = useMemo(() => getInitials(user), [user]);
   return (
     <SidebarMenu>
@@ -97,8 +97,10 @@ const NavUser: React.FC<NavUserProps> = ({ user }) => {
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer">
               <SignOutButton>
-                <Icon name="logout" className="w-5 h-5" />
-                Log out
+                <div className="contents">
+                  <Icon name="logout" className="w-5 h-5" />
+                  Log out
+                </div>
               </SignOutButton>
             </DropdownMenuItem>
           </DropdownMenuContent>
