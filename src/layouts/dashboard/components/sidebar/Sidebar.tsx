@@ -13,12 +13,8 @@ import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 import NavUser from "./NavUser";
 import Icon from "@/components/icons";
-import type { User } from "@/types/user";
 
-interface DashboardSidebarProps {
-  readonly user: User;
-}
-export default function DashboardSidebar({ user }: DashboardSidebarProps) {
+export default function DashboardSidebar() {
   const location = useLocation();
   return (
     <Sidebar collapsible="icon">
@@ -53,7 +49,7 @@ export default function DashboardSidebar({ user }: DashboardSidebarProps) {
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="p-2">
-        <NavUser user={user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   );

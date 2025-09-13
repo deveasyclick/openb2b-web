@@ -11,7 +11,7 @@ export interface User extends Base {
   email?: string;
   phone: string;
   role: Role;
-  orgId: string;
+  orgId?: string;
   org?: Org;
   address: Address;
 }
