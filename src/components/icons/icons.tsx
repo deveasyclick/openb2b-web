@@ -14,6 +14,7 @@ import {
   ShoppingCart,
   Package,
   CheckCircle2,
+  Loader2,
 } from "lucide-react";
 
 export const Icons = {
@@ -32,4 +33,5 @@ export const Icons = {
   shoppingCart: ShoppingCart,
   package: Package,
   checkMarkCircle: CheckCircle2,
+  circleLoader: Loader2,
 };
