@@ -1,7 +1,7 @@
 import type { User } from "@/types/user";
 
 const getInitials = (user: User) => {
-  if (!user.firstName && !user.lastName) return "";
+  if (!user || !user?.firstName || !user.lastName) return "";
 
   const firstName = user.firstName;
   const lastName = user.lastName;
