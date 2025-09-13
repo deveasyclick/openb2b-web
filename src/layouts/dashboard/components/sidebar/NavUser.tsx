@@ -20,10 +20,12 @@ import type React from "react";
 import Icon from "@/components/icons";
 import { useMemo } from "react";
 import { getInitials } from "@/utils";
+import { EXTERNAL_IMAGES } from "@/constants/image";
+import type { User } from "@/types/user";
+import { SignOutButton } from "@clerk/react-router";
 
-// TODO: replace with real user data type
 interface NavUserProps {
-  user: Record<string, string>;
+  user: User;
 }
 
 const NavUser: React.FC<NavUserProps> = ({ user }) => {
@@ -40,9 +42,7 @@ const NavUser: React.FC<NavUserProps> = ({ user }) => {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage
-                  src={
-                    "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
-                  }
+                  src={EXTERNAL_IMAGES.AVATAR}
                   alt={user.firstName}
                 />
                 <AvatarFallback className="rounded-lg">
@@ -80,7 +80,7 @@ const NavUser: React.FC<NavUserProps> = ({ user }) => {
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <Icon name="sparkle" className="w-5 h-5" />
-                {user.name}
+                {user.firstName}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
@@ -96,8 +96,10 @@ const NavUser: React.FC<NavUserProps> = ({ user }) => {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer">
-              <Icon name="logout" className="w-5 h-5" />
-              Log out
+              <SignOutButton>
+                <Icon name="logout" className="w-5 h-5" />
+                Log out
+              </SignOutButton>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
