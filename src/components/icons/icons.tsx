@@ -13,6 +13,7 @@ import {
   SearchIcon,
   ShoppingCart,
   Package,
+  CheckCircle2,
 } from "lucide-react";
 
 export const Icons = {
@@ -30,4 +31,5 @@ export const Icons = {
   search: SearchIcon,
   shoppingCart: ShoppingCart,
   package: Package,
+  checkMarkCircle: CheckCircle2,
 };
