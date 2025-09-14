@@ -15,6 +15,10 @@ import {
   Package,
   CheckCircle2,
   Loader2,
+  ArrowLeft,
+  ArrowRight,
+  Loader,
+  Upload,
 } from "lucide-react";
 
 export const Icons = {
@@ -34,4 +38,8 @@ export const Icons = {
   package: Package,
   checkMarkCircle: CheckCircle2,
   circleLoader: Loader2,
+  arrowLeft: ArrowLeft,
+  arrowRight: ArrowRight,
+  loader: Loader,
+  upload: Upload,
 };
